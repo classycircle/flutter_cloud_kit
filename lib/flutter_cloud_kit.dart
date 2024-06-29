@@ -39,7 +39,7 @@ class FlutterCloudKit {
   Future<void> saveRecord(
       {required CloudKitDatabaseScope scope,
       required String recordType,
-      required Map<String, String> record,
+      required Map<String, dynamic> record,
       String? recordName}) {
     validateCloudKitIdentifier(recordType);
     record.keys.forEach(validateCloudKitIdentifier);
@@ -47,7 +47,15 @@ class FlutterCloudKit {
         containerId: containerId,
         scope: scope,
         recordType: recordType,
-        record: record,
+        record: record.map((key, value) {
+          if (value is DateTime) {
+            return MapEntry(key, value.toIso8601String());
+          } else if (value is bool) {
+            return MapEntry(key, value ? 'true' : 'false');
+          } else {
+            return MapEntry(key, value.toString());
+          }
+        }),
         recordName: recordName);
   }
 
