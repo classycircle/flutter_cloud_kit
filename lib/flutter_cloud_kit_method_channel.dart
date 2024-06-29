@@ -47,6 +47,10 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
     if (recordName != null) {
       args['recordName'] = recordName;
     }
+
+    // Log the arguments before invoking the method
+    print('Arguments to saveRecord: $args');
+
     await methodChannel.invokeMethod('saveRecord', args);
   }
 
