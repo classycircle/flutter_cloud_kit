@@ -27,12 +27,20 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
       {String? containerId,
       required CloudKitDatabaseScope scope,
       required String recordType,
-      required Map<String, String> record,
+      required Map<String, dynamic> record,
       String? recordName}) async {
     var args = {
       'databaseScope': scope.name,
       'recordType': recordType,
-      'record': record
+      'record': record.map((key, value) {
+        if (value is DateTime) {
+          return MapEntry(key, value.toIso8601String());
+        } else if (value is bool) {
+          return MapEntry(key, value ? 'true' : 'false');
+        } else {
+          return MapEntry(key, value.toString());
+        }
+      }),
     };
     if (containerId != null) {
       args['containerId'] = containerId;
@@ -58,7 +66,7 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
     Map<Object?, Object?> result =
         await methodChannel.invokeMethod('getRecord', args);
 
-    return CloudKitRecord.fromMap(result);
+    return CloudKitRecord.fromMap(Map<String, dynamic>.from(result));
   }
 
   @override
@@ -79,7 +87,7 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
 
     try {
       return result
-          .map((e) => e as Map<Object?, Object?>)
+          .map((e) => Map<String, dynamic>.from(e as Map))
           .map(CloudKitRecord.fromMap)
           .toList();
     } catch (e) {
