@@ -51,7 +51,13 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
     // Log the arguments before invoking the method
     print('Arguments to saveRecord (Dart): $args');
 
-    await methodChannel.invokeMethod('saveRecord', args);
+    // Try-catch to log potential method channel invocation errors
+    try {
+      await methodChannel.invokeMethod('saveRecord', args);
+      print('Method channel invokeMethod successful');
+    } catch (e) {
+      print('Method channel invokeMethod error: $e');
+    }
   }
 
   @override
