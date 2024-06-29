@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_cloud_kit/types/cloud_ket_record.dart';
+import 'package:flutter_cloud_kit/types/cloud_kit_record.dart';
 import 'package:flutter_cloud_kit/types/cloud_kit_account_status.dart';
 import 'package:flutter_cloud_kit/types/database_scope.dart';
 
@@ -23,12 +23,13 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
   }
 
   @override
-  Future<void> saveRecord(
-      {String? containerId,
-      required CloudKitDatabaseScope scope,
-      required String recordType,
-      required Map<String, dynamic> record,
-      String? recordName}) async {
+  Future<void> saveRecord({
+    String? containerId,
+    required CloudKitDatabaseScope scope,
+    required String recordType,
+    required Map<String, dynamic> record,
+    String? recordName,
+  }) async {
     var args = {
       'databaseScope': scope.name,
       'recordType': recordType,
@@ -52,10 +53,11 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
   }
 
   @override
-  Future<CloudKitRecord> getRecord(
-      {String? containerId,
-      required CloudKitDatabaseScope scope,
-      required String recordName}) async {
+  Future<CloudKitRecord> getRecord({
+    String? containerId,
+    required CloudKitDatabaseScope scope,
+    required String recordName,
+  }) async {
     var args = {
       'databaseScope': scope.name,
       'recordName': recordName,
@@ -70,10 +72,11 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
   }
 
   @override
-  Future<List<CloudKitRecord>> getRecordsByType(
-      {String? containerId,
-      required CloudKitDatabaseScope scope,
-      required String recordType}) async {
+  Future<List<CloudKitRecord>> getRecordsByType({
+    String? containerId,
+    required CloudKitDatabaseScope scope,
+    required String recordType,
+  }) async {
     var args = {
       'databaseScope': scope.name,
       'recordType': recordType,
@@ -96,10 +99,11 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
   }
 
   @override
-  Future<void> deleteRecord(
-      {String? containerId,
-      required CloudKitDatabaseScope scope,
-      required String recordName}) async {
+  Future<void> deleteRecord({
+    String? containerId,
+    required CloudKitDatabaseScope scope,
+    required String recordName,
+  }) async {
     var args = {
       'databaseScope': scope.name,
       'recordName': recordName,
