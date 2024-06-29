@@ -1,4 +1,4 @@
-import 'package:flutter_cloud_kit/types/cloud_ket_record.dart';
+import 'package:flutter_cloud_kit/types/cloud_kit_record.dart';
 import 'package:flutter_cloud_kit/types/cloud_kit_account_status.dart';
 import 'package:flutter_cloud_kit/types/database_scope.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
