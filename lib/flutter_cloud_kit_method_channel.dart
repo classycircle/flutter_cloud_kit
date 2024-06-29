@@ -31,15 +31,7 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
     var args = {
       'databaseScope': scope.name,
       'recordType': recordType,
-      'record': record.map((key, value) {
-        if (value is DateTime) {
-          return MapEntry(key, value.microsecondsSinceEpoch);
-        } else if (value is bool) {
-          return MapEntry(key, value ? 'true' : 'false');
-        } else {
-          return MapEntry(key, value);
-        }
-      }),
+      'record': record,
     };
     if (containerId != null) {
       args['containerId'] = containerId;
