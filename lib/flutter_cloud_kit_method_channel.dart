@@ -3,10 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_cloud_kit/types/cloud_kit_record.dart';
 import 'package:flutter_cloud_kit/types/cloud_kit_account_status.dart';
 import 'package:flutter_cloud_kit/types/database_scope.dart';
-
 import 'flutter_cloud_kit_platform_interface.dart';
 
-/// An implementation of [FlutterCloudKitPlatform] that uses method channels.
 class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('app.fuelet.flutter_cloud_kit');
