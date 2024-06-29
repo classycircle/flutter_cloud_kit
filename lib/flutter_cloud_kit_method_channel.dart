@@ -33,7 +33,7 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
       'recordType': recordType,
       'record': record.map((key, value) {
         if (value is DateTime) {
-          return MapEntry(key, value.toIso8601String());
+          return MapEntry(key, value.microsecondsSinceEpoch);
         } else if (value is bool) {
           return MapEntry(key, value ? 'true' : 'false');
         } else {
