@@ -1,6 +1,22 @@
 Map<String, dynamic> _parseRecord(Object? record) {
   return (record as Map<Object?, Object?>)
-      .map((key, value) => MapEntry(key.toString(), value));
+      .map((key, value) => MapEntry(key.toString(), _parseValue(value)));
+}
+
+dynamic _parseValue(Object? value) {
+  if (value is String) {
+    // Attempt to parse DateTime and bool from String
+    try {
+      return DateTime.parse(value);
+    } catch (_) {
+      if (value == 'true' || value == 'false') {
+        return value == 'true';
+      }
+      // If not a date or boolean, return as string
+      return value;
+    }
+  }
+  return value;
 }
 
 class CloudKitRecord {
