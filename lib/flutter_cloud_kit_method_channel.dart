@@ -37,7 +37,7 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
         } else if (value is bool) {
           return MapEntry(key, value ? 'true' : 'false');
         } else {
-          return MapEntry(key, value.toString());
+          return MapEntry(key, value);
         }
       }),
     };
