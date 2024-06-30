@@ -41,7 +41,9 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
     }
 
     // Log the arguments before invoking the method
-    print('Arguments to saveRecord (Dart): $args');
+    args.forEach((key, value) {
+      print('Argument $key: value = $value, type = ${value.runtimeType}');
+    });
 
     // Try-catch to log potential method channel invocation errors
     try {
