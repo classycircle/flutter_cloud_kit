@@ -7,7 +7,7 @@ import 'flutter_cloud_kit_platform_interface.dart';
 
 class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
   @visibleForTesting
-  final methodChannel = const MethodChannel('app.fuelet.flutter_cloud_kit');
+  final methodChannel = const MethodChannel('app.bplog.cloudkit');
 
   @override
   Future<CloudKitAccountStatus> getAccountStatus({String? containerId}) async {
