@@ -45,11 +45,6 @@ class MethodChannelFlutterCloudKit extends FlutterCloudKitPlatform {
     //   record['date'] = (record['date'] as int).toDouble() / 1000;
     // }
 
-    // Convert date to double (seconds since epoch) for CloudKit
-    if (record.containsKey('date')) {
-      record['date'] = record['date'].toDouble() / 1000;
-    }
-
     // Log the arguments before invoking the method
     args.forEach((key, value) {
       print('Argument $key: value = $value, type = ${value.runtimeType}');
